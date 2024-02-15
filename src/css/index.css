@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+@tailwind base; 
+@tailwind components; 
+@tailwind utilities; 
+
+/*this will be the font for the whole page...*/
+html, 
+body{
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/*style of the first view*/
+.first_view{
+    background-image: linear-gradient(330deg, #4794bf 0, #3c5d74 25%, #25292d 50%, #000000 75%, #000000 100%);
+}
