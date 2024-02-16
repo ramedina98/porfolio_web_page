@@ -16,6 +16,8 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
 
     const controls = useAnimation();
 
+    /*const [menuAbierto, setMenuAbierto] = useState(true);*/
+
     useEffect(() => {
         controls.start({ height: "100%", opacity: 1 });
     }, [controls]);
@@ -34,12 +36,19 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
     const handleLottieClick = () => {
         console.log('Hola')
     }
+
+    {/*TODO: hay que revisar esto para que cuando le des click pueda cerrar el menu*/}
+    const handleClose = () => {
+        console.log('Hola');
+    }
+
     {/*TODO: agregar el path, cuando ya esten*/}
     const navItems = [
-        { text: "Home", description: "Back to the home page." },
-        { text: "Work & projects", description: "My approach to development." },
-        { text: "Resume", description: "Explore my journey and skills." },
-        { text: "Blog", description: "My latest writing." },
+        { path: '/', text: "Home", description: "Back to the home page." },
+        { path: '/work_projects',text: "Work", description: "My approach to development." },
+        { path: '/my_projects',text: "Projects", description: "My personal projects (porfolio)." },
+        { path: '/resume',text: "Resume", description: "Explore my journey and skills." },
+        { path: '/blog',text: "Blog", description: "My latest writing." },
     ];
 
     return (
@@ -136,10 +145,11 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
                         initial={{ x: 250, y: -100, opacity: 0 }}
                         animate={{ x: 0, y: 0, opacity: 1 }}
                         transition={{ duration: 0.6 * (index + 1) }} // Ajusta la duración según tus preferencias
-                        className="flex justify-start items-center w-full py-2"
+                        className="flex justify-start items-center w-full py-1"
+                        onClick={handleClose}
                         >
                         <Link
-                            to={'/'}
+                            to={item.path}
                             className="text-fontSnavMB text-CBS font-bold hover:text-CST cursor-pointer mr-10 w-clampLiNavBM"
                         >
                             {item.text}
