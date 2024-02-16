@@ -2,15 +2,23 @@
 import React from "react";
 import LottieRender from '../../assets/lottie_svg/LottieRender.tsx';
 import animationData from "../../assets/lottie_json/logo.json";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
+//TODO: aprender más de como funciona el 'FRAMER MOTION'
 
 interface NavMenuProps {
     cerrarMenu: () => void;
 }
-/**<button onClick={cerrarMenu}>
-                <i className="fa-regular fa-rectangle-xmark"></i> cerrarMenu
-            </button> */
 
 const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
+
+    const controls = useAnimation();
+
+    useEffect(() => {
+        controls.start({ height: "100%", opacity: 1 });
+    }, [controls]);
 
     {/*Mañana hay que continuar aqui*/}
 
@@ -21,21 +29,130 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
         padding: '1px'
     };
 
-    {/*this is the function that helps us to display the menu when we click on the svg*/}
+    {/*this is the function that helps us to display the menu when we click on the svg
+    TODO: ver si esto es necesario...*/}
     const handleLottieClick = () => {
         console.log('Hola')
     }
-    // Contenido de tu componente NavMenu
+    {/*TODO: agregar el path, cuando ya esten*/}
+    const navItems = [
+        { text: "Home", description: "Back to the home page." },
+        { text: "Work & projects", description: "My approach to development." },
+        { text: "Resume", description: "Explore my journey and skills." },
+        { text: "Blog", description: "My latest writing." },
+    ];
+
     return (
-        <div className="w-full h-full absolute z-2 p-4">
-            <div className="w-full h-full bg-CSH">
-                <div className="w-full py-3 flex justify-between items-center">
-                    <div>
-                        <div>{LottieRender({animationData, containerStyle: customBurguerMStyle, onCustomClick: handleLottieClick})}</div>
+        <motion.div
+            className="w-full h-full fixed z-2 p-5"
+            initial={{ height: "150px", opacity: 0 }}
+            animate={controls}
+            transition={{duration: 0.25}}
+        >
+            <motion.div
+                className="w-full h-full bg-CSH"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+            >
+                <motion.div
+                    className="w-full py-8 flex justify-between items-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                >
+                    <div className="ml-2 py-2 w-wHiremeDiv flex justify-evenly items-center flex-row">
+                        {LottieRender({
+                        animationData,
+                        containerStyle: customBurguerMStyle,
+                        onCustomClick: handleLottieClick,
+                    })}
+                    <div className="border-l-2 border-CSTO py-3 pl-4">
+                        <a
+                            href="mailto:rmedinamartindelcampo@gmail.com"
+                            className="text-CBS font-semibold tracking-wider"
+                    >
+                            HIRE ME
+                        </a>
                     </div>
+                    </div>
+        
+                    <div className="mr-2 py-5 w-wCloseBtn flex justify-center items-center">
+                        <i
+                            className="fa-regular fa-circle-xmark text-iconBtnX scale-150 text-CST hover:text-CSTO cursor-pointer"
+                            onClick={cerrarMenu}
+                            ></i>
+                    </div>
+                </motion.div>
+                <motion.div 
+                    initial={{ scale: 0.3 }}
+                    animate={{ scale: 1 }}
+                    transition={{duration:0.6}}
+                    className="py-1 mt-2 w-full h-auto flex justify-center px-5 mobileBM:justify-start"
+                >
+                    <div className="hidden border-b-2 border-CSTO w-wLeftLineBM pb-1 ml-4 mr-4 mb-3 justify-center items-end mobileBM:flex">
+                        <p className="text-CBS font-semibold tracking-wide">SAY HELLO</p>
+                    </div>
+                    <div className=" w-wSocialMBM">
+                        <ul className="w-full h-full flex justify-evenly items-center flex-row">
+                            <li className='p-2 rounded-r-xl hover:bg-CSTO my-2'>
+                                <a href="mailto:rmedinamartindelcampo@gmail.com" target='_blank' className='w-full p-3'>
+                                    <i className="fa-solid fa-envelope text-lg text-CBS"></i>
+                                </a>
+                            </li>
+                            <li className='p-2 rounded-full hover:bg-CSTO my-2'>
+                                <a href="https://t.me/ricardoMedinaDev" target='_blank' className='w-full p-3'>
+                                    <i className="fa-brands fa-telegram text-lg text-CBS"></i>
+                                </a>
+                            </li>
+                            <li className='p-2 rounded-full hover:bg-CSTO my-2'>
+                                <a href="https://www.linkedin.com/feed/" target='_blank' className='w-full p-3'>
+                                    <i className="fa-brands fa-linkedin-in text-lg text-CBS"></i>
+                                </a>
+                            </li>
+                            <li className='p-2 rounded-full hover:bg-CSTO my-2 hidden mobileBM:block'>
+                                <a href="https://www.instagram.com/richard_b_stone/?hl=es-la" target="_blank" className='w-full p-3'>
+                                    <i className="fa-brands fa-instagram text-lg text-CBS"></i>
+                                </a>
+                            </li>
+                            <li className='p-2 rounded-full hover:bg-CSTO my-2 hidden mobileBM:block'>
+                                <a href="" target='_blank' className='w-full p-3'>
+                                    <i className="fa-brands fa-twitter text-lg text-CBS"></i>
+                                </a>
+                            </li>
+                            <li className='p-2 rounded-l-xl hover:bg-CSTO my-2'>
+                                <a href="https://open.spotify.com/user/315krne4ot5xcvh2kfmvolela6m4?si=091f91ae53034e87" target='_blank' className='w-full p-3'>
+                                    <i className="fa-brands fa-spotify text-lg text-CBS"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </motion.div>
+                {/*TODO: hay que agregar las rutas correctas a cada seccion
+                    No las tiene porque aun no estan definidas correctamente*/}
+                <div className="w-full h-auto">
+                    <ul className="w-full h-hUlBMnav pl-8 p-4">
+                    {navItems.map((item, index) => (
+                        <motion.li
+                        key={index}
+                        initial={{ x: 250, y: -100, opacity: 0 }}
+                        animate={{ x: 0, y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6 * (index + 1) }} // Ajusta la duración según tus preferencias
+                        className="flex justify-start items-center w-full py-2"
+                        >
+                        <Link
+                            to={'/'}
+                            className="text-fontSnavMB text-CBS font-bold hover:text-CST cursor-pointer mr-10 w-clampLiNavBM"
+                        >
+                            {item.text}
+                        </Link>
+                        <span className="hidden screenSapnBM:inline text-CBS text-lg tracking-wider font-medium w-1/2">
+                            {item.description}
+                        </span>
+                        </motion.li>
+                    ))}
+                    </ul>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
 

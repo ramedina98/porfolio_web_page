@@ -4,6 +4,7 @@ import LottieRender from './assets/lottie_svg/LottieRender.tsx';
 import animationData from './assets/lottie_json/burguer_menu.json';
 import NavMenu from './components/app/NavMenu.tsx';
 
+
 //Here we only defined the header and the footer
 
 interface AppProps{
@@ -30,6 +31,7 @@ const App: React.FC<AppProps> = ( { apiKey } ) => {
     document.body.style.overflowY = 'hidden';
   }
 
+  
   return (
     <>
     {/*TODO: darle un back ground CDS cuando haga escrolll*/}
@@ -52,7 +54,8 @@ const App: React.FC<AppProps> = ( { apiKey } ) => {
           </div>
 
           <div className='w-full py-5 flex justify-start items-start flex-wrap gap-4'>
-
+            {/*TODO: hay que agregar las rutas correctas a cada seccion y cambiar los <a></a> por <Link></Link>
+                    No las tiene porque aun no estan definidas correctamente*/}
             <div className='w-wfooterNav'>
               <ul className='w-full h-full p-3'>
                 <li className='text-CTW p-3 tracking-wider text-lisFooter rounded-lg cursor-pointer hover:bg-CGS'>My Work</li>
@@ -70,22 +73,27 @@ const App: React.FC<AppProps> = ( { apiKey } ) => {
 
             <div className='ml-10'>
               <ul className='w-full h-full p-3'>
-                <li className='p-2 rounded-r-xl hover:bg-CGS my-2'>
+                <li className='p-2 rounded-b-xl hover:bg-CGS my-2'>
+                  <a href="https://github.com/ramedina98" target='_blank' className='w-full p-3'>
+                    <i className="fa-brands fa-github text-lg text-CTW"></i>
+                  </a>
+                </li>
+                <li className='p-2 rounded-full hover:bg-CGS my-2'>
                   <a href="https://www.linkedin.com/feed/" target='_blank' className='w-full p-3'>
                     <i className="fa-brands fa-linkedin-in text-lg text-CTW"></i>
                   </a>
                 </li>
-                <li className='p-2 rounded-r-xl hover:bg-CGS my-2'>
+                <li className='p-2 rounded-full hover:bg-CGS my-2'>
                   <a href="https://www.instagram.com/richard_b_stone/?hl=es-la" target="_blank" className='w-full p-3'>
                     <i className="fa-brands fa-instagram text-lg text-CTW"></i>
                   </a>
                 </li>
-                <li className='p-2 rounded-r-xl hover:bg-CGS my-2'>
+                <li className='p-2 rounded-full hover:bg-CGS my-2'>
                   <a href="" target='_blank' className='w-full p-3'>
                     <i className="fa-brands fa-twitter text-lg text-CTW"></i>
                   </a>
                 </li>
-                <li className='p-2 rounded-r-xl hover:bg-CGS my-2'>
+                <li className='p-2 rounded-t-xl hover:bg-CGS my-2'>
                   <a href="https://open.spotify.com/user/315krne4ot5xcvh2kfmvolela6m4?si=091f91ae53034e87" target='_blank' className='w-full p-3'>
                     <i className="fa-brands fa-spotify text-lg text-CTW"></i>
                   </a>
