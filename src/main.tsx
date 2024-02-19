@@ -17,10 +17,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement ).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App apiKey={apiKey} />}>
+        <Route path="/" element={<App />}>
           {/*Aqui hay que inicar poniendo las demas rutas
           ejemplo en el repositorio donde tengo la app "Where in the world" */}
-          <Route index element={<Home />}></Route>
+          <Route index element={<Home apiKey={apiKey} />}></Route>
           <Route path="/work_projects" element={<WorkProjects />}></Route>
           <Route path="/project/:id" element={<Project />}></Route>
           <Route path="/my_projects" element={<MyProjects />}></Route>
@@ -29,7 +29,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement ).render(
         <Route path="/resume" element={<Resume />}></Route>
         {/*Este parte del router, posteriormete necesitara agregarle más rutas
           para el correcto funcionamiento del blog*/}
-        <Route path="/blog" element={<Blog />}></Route>
+        <Route path="/blog" element={<Blog />}>
+          {/*here will be more components, when the blog's ready*/}
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

@@ -5,8 +5,8 @@ import animationData from "../../assets/lottie_json/logo.json";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-//TODO: aprender más de como funciona el 'FRAMER MOTION'
 
 interface NavMenuProps {
     cerrarMenu: () => void;
@@ -16,33 +16,29 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
 
     const controls = useAnimation();
 
+    //the 'location' object is obtained, containing details about the current location...
+    const location = useLocation();
+    //the 'pathname' property is extracted from the 'location' object to get the current path of the URL...
+    const currentPath = location.pathname;
+
     /*const [menuAbierto, setMenuAbierto] = useState(true);*/
 
     useEffect(() => {
         controls.start({ height: "100%", opacity: 1 });
     }, [controls]);
 
-    {/*Mañana hay que continuar aqui*/}
-
-    const customBurguerMStyle = {
+    //these are the custom styles for the animated svg that is on the upper left hand side...
+    const customStyle = {
         width: '60px', 
         height: '50px',
         borderRadius: '0.3em',  
         padding: '1px'
     };
 
-    {/*this is the function that helps us to display the menu when we click on the svg
-    TODO: ver si esto es necesario...*/}
     const handleLottieClick = () => {
         console.log('Hola')
     }
 
-    {/*TODO: hay que revisar esto para que cuando le des click pueda cerrar el menu*/}
-    const handleClose = () => {
-        console.log('Hola');
-    }
-
-    {/*TODO: agregar el path, cuando ya esten*/}
     const navItems = [
         { path: '/', text: "Home", description: "Back to the home page." },
         { path: '/work_projects',text: "Work", description: "My approach to development." },
@@ -53,13 +49,13 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
 
     return (
         <motion.div
-            className="w-full h-full fixed z-2 p-5"
+            className="w-full h-full fixed z-2 py-5 px-1 NavmenuMobile:p-5"
             initial={{ height: "150px", opacity: 0 }}
             animate={controls}
             transition={{duration: 0.25}}
         >
             <motion.div
-                className="w-full h-full bg-CSH"
+                className="w-full h-full bg-CSH rounded-lg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >
@@ -71,7 +67,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
                     <div className="ml-2 py-2 w-wHiremeDiv flex justify-evenly items-center flex-row">
                         {LottieRender({
                         animationData,
-                        containerStyle: customBurguerMStyle,
+                        containerStyle: customStyle,
                         onCustomClick: handleLottieClick,
                     })}
                     <div className="border-l-2 border-CSTO py-3 pl-4">
@@ -135,30 +131,33 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
                         </ul>
                     </div>
                 </motion.div>
-                {/*TODO: hay que agregar las rutas correctas a cada seccion
-                    No las tiene porque aun no estan definidas correctamente*/}
                 <div className="w-full h-auto">
                     <ul className="w-full h-hUlBMnav pl-8 p-4">
-                    {navItems.map((item, index) => (
-                        <motion.li
-                        key={index}
-                        initial={{ x: 250, y: -100, opacity: 0 }}
-                        animate={{ x: 0, y: 0, opacity: 1 }}
-                        transition={{ duration: 0.6 * (index + 1) }} // Ajusta la duración según tus preferencias
-                        className="flex justify-start items-center w-full py-1"
-                        onClick={handleClose}
-                        >
-                        <Link
-                            to={item.path}
-                            className="text-fontSnavMB text-CBS font-bold hover:text-CST cursor-pointer mr-10 w-clampLiNavBM"
-                        >
-                            {item.text}
-                        </Link>
-                        <span className="hidden screenSapnBM:inline text-CBS text-lg tracking-wider font-medium w-1/2">
-                            {item.description}
-                        </span>
-                        </motion.li>
-                    ))}
+                    {navItems.map((item, index) => {
+                        {/*here we compare if the cirrent path is the same as the item's path*/}
+                        const isCurrentPathDifferent = currentPath !== item.path; 
+
+                        return isCurrentPathDifferent ? (
+                            <motion.li
+                            key={index}
+                            initial={{ x: 250, y: -100, opacity: 0 }}
+                            animate={{ x: 0, y: 0, opacity: 1 }}
+                            transition={{ duration: 0.6 * (index + 1) }}
+                            className="flex justify-start items-center w-full py-3"
+                            >
+                            <Link
+                                to={item.path}
+                                className="text-fontSnavMB text-CBS font-bold hover:text-CST cursor-pointer mr-10 w-clampLiNavBM"
+                                onClick={cerrarMenu}
+                            >
+                                {item.text}
+                            </Link>
+                            <span className="hidden screenSapnBM:inline text-CBS text-lg tracking-wider font-medium w-1/2">
+                                {item.description}
+                            </span>
+                            </motion.li>
+                        ) : null; 
+                    })}
                     </ul>
                 </div>
             </motion.div>

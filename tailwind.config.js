@@ -37,6 +37,7 @@ export default {
       screens: {
         'mobileBM': '507px',
         'screenSapnBM': '598px',
+        'NavmenuMobile': '384px',
       },
     },
   },

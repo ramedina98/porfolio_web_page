@@ -2,7 +2,13 @@ import React from 'react';
 import '../../css/index.css';
 //This component contain all the main content of the page...
 
-const Home: React.FC = () => {
+interface AppProps{
+    apiKey: string; 
+}
+
+//usar el apiKey cuando sea necesario... ({ apiKey })
+const Home: React.FC<AppProps> = () => {
+
     return (
         <>
             <div>
