@@ -8,6 +8,7 @@ export default {
         'lisFooter': '0.97em',
         'iconBtnX':'1.9em',
         'fontSnavMB': '3.3em',
+        'fontTitleWork': '3.3em',
       },
       colors: {
         'CTW': '#FFFFFF',
@@ -22,6 +23,8 @@ export default {
         'clampHeader': 'clamp(310px, 85%, 1430px)',
         'clampFooter': 'clamp(310px, 95%, 1050px)',
         'clampLiNavBM': 'clamp(310px, 95%, 450px)',
+        'clampFirstPartHome': 'clamp(310px, 100%, 960px)',
+        'clampSecondPartHome': 'clamp(310px, 90%, 1250px)'
       }, 
       width: {
         'wfooterNav': '310px',
@@ -29,15 +32,21 @@ export default {
         'wCloseBtn': '150px',
         'wSocialMBM': '315px',
         'wLeftLineBM': '100px',
+        'wTitleBrief': '550px',
+        'wMyPhoto': '350px', 
+        'wHomeSecondPartDivSkill': '500px',
       },
       height: {
-        'hFirstView': '750px', 
+        'hFirstView': '700px',
+        'hFirstView2': '500px', 
         'hUlBMnav': '100%',
       }, 
       screens: {
         'mobileBM': '507px',
         'screenSapnBM': '598px',
         'NavmenuMobile': '384px',
+        'firstPartHome': '926px',
+        'secondPartHome': '1129px',
       },
     },
   },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import LottieRender from './assets/lottie_svg/LottieRender.tsx';
@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
   //this hook is for sawing and opening navMenu...
   const [menuAbierto, SetMenuAbierto] = useState(false);
-  
+    
   //Customized styles for the burger menu...
   const customBurguerMStyle = {
     width: '60px', 
@@ -29,11 +29,33 @@ const App: React.FC = () => {
     document.body.style.overflowY = 'hidden';
   }
 
-  
+  //code to change the color of the header on scrolling y
+  const [_scrollY, setScrollY] = useState(0);
+  const [headerColor, setHeaderColor] = useState<string>('transparent');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      //change the color...
+      if(window.scrollY > 50){
+        setHeaderColor('#252a2da7');
+      } else{
+        setHeaderColor('transparent');
+      }
+    };
+
+    //add the scroll event listener...
+    window.addEventListener('scroll', handleScroll);
+
+    //clears the event listener when unmounting the component...
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }; 
+  }, []);
+
   return (
     <>
-    {/*TODO: darle un back ground CDS cuando haga scrolll y que no se sobre ponga al footer...*/}
-      <header className='py-5 bg-transparent fixed top-0 right-0 w-full flex justify-center items-center'>
+      <header style={{backgroundColor: headerColor, transition: 'background-color 0.5s ease'}} className={`py-5 fixed z-10 top-0 right-0 w-full flex justify-center items-center`}>
         <div className='flex justify-between items-center w-clampHeader'>
           <div className='text-sizeTitleHeader text-CTW font-medium tracking-wider cursor-pointer'>
             <Link to="/">Ricardo Medina</Link>
@@ -48,7 +70,7 @@ const App: React.FC = () => {
 
       {/*TODO: hay que hacer que cuando el nav pase por encima del footer desaparesca, 
       o que el fondo de este sea de otro color...*/}
-      <footer className='bg-CBS py-5 flex justify-center items-center'>
+      <footer className='bg-CBS py-5 flex  z justify-center items-center'>
         <div className='w-clampFooter flex justify-center items-center flex-col px-1 py-6'>
           <div className=' w-full py-4'>
             {/*TODO: aqui debe ir mi logo, osea hay que cambiar esto cuando este listo dicho logo*/}

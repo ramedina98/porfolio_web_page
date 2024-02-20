@@ -29,7 +29,7 @@ const LottieRender = ({ animationData, containerStyle, onCustomClick}: LottiePro
                 }
             };
         }
-    }), [animationData];
+    }, [animationData]);
 
     return <div className='container' ref={container} style={containerStyle} onClick={onCustomClick}></div>
 };

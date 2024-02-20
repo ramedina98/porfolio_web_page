@@ -49,7 +49,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
 
     return (
         <motion.div
-            className="w-full h-full fixed z-2 py-5 px-1 NavmenuMobile:p-5"
+            className="w-full h-full fixed z-50 py-5 px-1 NavmenuMobile:p-5"
             initial={{ height: "150px", opacity: 0 }}
             animate={controls}
             transition={{duration: 0.25}}
