@@ -24,7 +24,8 @@ export default {
         'clampFooter': 'clamp(310px, 95%, 1050px)',
         'clampLiNavBM': 'clamp(310px, 95%, 450px)',
         'clampFirstPartHome': 'clamp(310px, 100%, 960px)',
-        'clampSecondPartHome': 'clamp(310px, 90%, 1250px)'
+        'clampSecondPartHome': 'clamp(310px, 90%, 1250px)', 
+        'clampTextDivExp': 'clamp(310px, 95%, 650px)'
       }, 
       width: {
         'wfooterNav': '310px',

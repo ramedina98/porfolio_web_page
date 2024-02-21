@@ -38,7 +38,7 @@ const App: React.FC = () => {
       setScrollY(window.scrollY);
       //change the color...
       if(window.scrollY > 50){
-        setHeaderColor('#252a2da7');
+        setHeaderColor('#252A2D');
       } else{
         setHeaderColor('transparent');
       }
