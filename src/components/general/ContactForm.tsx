@@ -1,4 +1,4 @@
-import React, { CSSProperties} from 'react';
+import React from 'react';
 import '../../css/index.css'
 
 /*TODO: ver si es necesario en un futuro
@@ -7,6 +7,7 @@ import '../../css/index.css'
     customStyle?: CSSProperties;
 }*/
 
+//TODO: falta hacer la validacion de los inputs y tambien hacer la conecion a la API post...
 const ContactForm: React.FC = () => {
     
     return (
