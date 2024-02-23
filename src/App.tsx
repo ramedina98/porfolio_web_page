@@ -9,7 +9,7 @@ import NavMenu from './components/app/NavMenu.tsx';
 //Here we only defined the header and the footer
 
 const App: React.FC = () => {
-
+  
   //this hook is for sawing and opening navMenu...
   const [menuAbierto, SetMenuAbierto] = useState(false);
     
@@ -55,7 +55,13 @@ const App: React.FC = () => {
 
   return (
     <>
-      <header style={{backgroundColor: headerColor, transition: 'background-color 0.5s ease'}} className={`py-5 fixed z-10 top-0 right-0 w-full flex justify-center items-center`}>
+      <header 
+        style={{
+            backgroundColor: headerColor, 
+            transition: 'background-color 0.5s ease'
+        }} 
+        className={`py-5 fixed z-20 top-0 right-0 w-full flex justify-center items-center`}
+      >
         <div className='flex justify-between items-center w-clampHeader'>
           <div className='text-sizeTitleHeader text-CTW font-medium tracking-wider cursor-pointer'>
             <Link to="/">Ricardo Medina</Link>

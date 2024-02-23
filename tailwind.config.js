@@ -34,7 +34,8 @@ export default {
         'wSocialMBM': '315px',
         'wLeftLineBM': '100px',
         'wTitleBrief': '550px',
-        'wMyPhoto': '350px', 
+        'wMyPhoto': '350px',
+        'inputsCf': '355px',
         'wHomeSecondPartDivSkill': '500px',
       },
       height: {
@@ -48,6 +49,8 @@ export default {
         'NavmenuMobile': '384px',
         'firstPartHome': '926px',
         'secondPartHome': '1129px',
+        'screenProjectsSection': '846px',
+        'inputsCF': '840px',
       },
     },
   },

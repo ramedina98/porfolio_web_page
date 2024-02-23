@@ -16,3 +16,19 @@ body{
 .first_view{
     background-image: linear-gradient(330deg, #4794bf 0, #3c5d74 25%, #25292d 50%, #000000 75%, #000000 100%);
 }
+
+/*hover style of input go ahead from contact form...*/
+.input_with_animation {
+    border: 1px solid #6C0BDF;
+    width: clamp(310px, 95%, 400px);
+    font-size: 1.05em;
+    color: #6a0bdf9f;
+    outline: none;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.input_with_animation:hover {
+    background-color: #6C0BDF;
+    transform: translateX(2px);
+    color: white !important;
+    border-radius: 0.3em;
+}

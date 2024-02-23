@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/index.css';
 import { motion } from "framer-motion";
 import LottieRender from '../../assets/lottie_svg/LottieRender.tsx';
@@ -8,14 +8,13 @@ import Pattern from '../../assets/svg/pattern.svg';
 import Programing from '../../assets/svg/programin2.svg';
 import Design from '../../assets/svg/design.svg';
 import Experience from '../../assets/svg/experience.svg';
+import ContactForm from '../general/ContactForm.tsx';
+//fetch Data...
+import FetchData from '../../api/GetApi.tsx';
+import { Link } from 'react-router-dom';
 //This component contain all the main content of the page...
 
-interface AppProps{
-    apiKey: string; 
-}
-
-//usar el apiKey cuando sea necesario... ({ apiKey })
-const Home: React.FC<AppProps> = () => {
+const Home: React.FC = () => {
 
     //Customized styles for the burger menu...
     const customSpaceStyle = {
@@ -27,6 +26,40 @@ const Home: React.FC<AppProps> = () => {
     const handleLottieClick = () => {
         console.log('hola');
     }
+
+    //handle the feaching of the data... 
+    const [_projectData, setProjectData] = useState<any>(null);
+
+    // Function to transform API data
+    const transformData = (apiData:any) => {
+        return apiData.map((item:any, index:number) => ({
+            id: index,
+            imgCover: item.cover_image_text,
+            title: item.name_project,
+            brief: item.description_project,
+        }));
+    };
+
+    // Example of usage in your component
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Fetch data from the API
+                const data = await FetchData<any>('http://localhost:3000/personal_projects');
+
+                // Transform the data
+                const transformedData = transformData(data.projects);
+
+                // Use the transformed data or set it in your component state
+                setProjectData(transformedData);
+            } catch (error) {
+                console.error('Error: ', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
 
     return (
         <>
@@ -66,11 +99,7 @@ const Home: React.FC<AppProps> = () => {
                         viewport={{ once: true }}
                         className='w-clampSecondPartHome my-6 h-auto flex flex-col justify-between items-center'>
                         <div className='w-full my-5 ml-2 flex justify-center secondPartHome:justify-between items-center flex-wrap gap-1'>
-                            <motion.div 
-                                initial={{ x:-100 }}
-                                whileInView={{ x: 0 }}
-                                transition={{ duration: 2.5 }}
-                                viewport={{ once: true }}
+                            <div 
                                 className='secondPartHome:w-wHomeSecondPartDivSkill w-full mb-6 secondPartHome:mb-0'>
                                 <h3 
                                     style={{ fontSize: 'clamp(40px, 8vw, 3.75em)' }} 
@@ -94,12 +123,8 @@ const Home: React.FC<AppProps> = () => {
                                     is where you'll encounter me. <span>My commitment revolves around crafting smooth user 
                                     interactions</span> while staying attuned to the latest trends.
                                 </p>
-                            </motion.div>
-                            <motion.div 
-                                initial={{ x:100 }}
-                                whileInView={{ x:0 }}
-                                transition={{ duration: 2.5 }}
-                                viewport={{ once: true }}
+                            </div>
+                            <div 
                                 className='p-1 secondPartHome:p-0 w-full secondPartHome:w-1/2 h-56'>
                                 <div 
                                     style={{
@@ -108,7 +133,7 @@ const Home: React.FC<AppProps> = () => {
                                             backgroundPosition: 'center', 
                                             backgroundSize: 'contain'}} 
                                     className='w-full h-full'></div>
-                            </motion.div>
+                            </div>
                         </div>
                         <div className='w-full my-5 mr-2 flex justify-between flex-col-reverse secondPartHome:flex-row items-center flex-wrap gap-1'>
                             <div className='p-1 secondPartHome:p-0 w-full secondPartHome:w-1/2 h-56'>
@@ -185,6 +210,147 @@ const Home: React.FC<AppProps> = () => {
                     </div>
                 </div>
                 {/*My projects: component.*/}
+                <div className='w-full h-auto px-1 py-3 bg-COTF flex justify-center items-center'>
+                    <div className='bg-CBS rounded-sm w-clampSecondPartHome h-auto my-24 flex flex-col screenProjectsSection:flex-row justify-start items-center screenProjectsSection:items-start'>
+                        {/*Personal projects.*/}
+                        <div
+                            style={{
+                                width: 'clamp(310px, 95%, 620px)',
+                                height: '550px',
+                            }}
+                            className='screenProjectsSection:border-r-2 border-CSH flex flex-col justify-center items-start'
+                        >
+                            <div className='w-full h-auto px-6 py-4'>
+                                <h3 
+                                    style={{fontSize: 'clamp(40px, 8vw, 2.75em)'}}
+                                    className='text-CSH font-bold tracking-wider'
+                                >
+                                    My projects
+                                </h3>
+                            </div>
+                            <div className='w-full h-56 px-6 py-4'>
+                                <div 
+                                    style={{
+                                        width: 'clamp(70px, 95%, 300px)'
+                                    }}
+                                >
+                                    <p className='text-CSH font-normal tracking-wider text-xl leading-8'>
+                                        Personal projects: merging art and code. Explore my web development 
+                                        in <span className='text-CSTO'>frontend and backend</span>.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className='w-full flex h-auto py-4'>
+                                <Link 
+                                    to={'/my_projects'}
+                                    style={{
+                                        width:'clamp(2px, 95%, 270px)',
+                                        height: '55px'
+                                    }}
+                                    className='relative z-10 px-6 py-4 text-CSH'
+                                >
+                                    <motion.div
+                                        style={{
+                                            scale: 1,
+                                            backgroundColor: 'transparent', 
+                                            borderRadius: '0',
+                                            x: 0,
+                                            fontWeight: '400',
+                                        }}
+                                        whileHover={{
+                                            scale: 1.1, 
+                                            backgroundColor: '#4ecdcf63',
+                                            borderRadius: '0.3em',
+                                            x: 30,
+                                            fontWeight: '600',
+                                        }}
+                                        transition={{ duration: 0.5 }}
+                                        className='tracking-wide border-2 w-full h-full absolute z-0 flex justify-center items-center'
+                                    >
+                                        SEE MY PROJECTS <i className="fa-solid fa-arrow-right ml-3"></i>
+                                    </motion.div>
+                                </Link>
+                            </div>
+                        </div>
+                        {/*work projecst.*/}
+                        <div
+                            style={{
+                                width: 'clamp(310px, 95%, 620px)',
+                                height: '550px',
+                            }}
+                            className='screenProjectsSection:border-l-2 border-CSH flex flex-col justify-center items-start'
+                        >
+                            <div className='w-full h-auto px-6 py-4'>
+                                <h3 
+                                    style={{fontSize: 'clamp(40px, 8vw, 2.75em)'}}
+                                    className='text-CSH font-bold tracking-wider'
+                                >
+                                    Work Projects
+                                </h3>
+                            </div>
+                            <div className='w-full h-56 px-6 py-4'>
+                                <div 
+                                    style={{
+                                        width: 'clamp(70px, 95%, 300px)'
+                                    }}
+                                >
+                                    <p className='text-CSH font-normal tracking-wider text-xl leading-8'>
+                                        <span className='text-CSTO'>Explore my journey</span> through featured projects, showcasing technical prowess and creative solutions.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className='w-full flex h-auto py-4'>
+                                <Link 
+                                    to={'/work_projects'}
+                                    style={{
+                                        width:'clamp(2px, 95%, 270px)',
+                                        height: '55px'
+                                    }}
+                                    className='relative z-10 px-6 py-4 text-CSH'
+                                >
+                                    <motion.div
+                                        style={{
+                                            scale: 1,
+                                            backgroundColor: 'transparent', 
+                                            borderRadius: '0',
+                                            x: 0,
+                                            fontWeight: '400',
+                                        }}
+                                        whileHover={{
+                                            scale: 1.1, 
+                                            backgroundColor: '#4ecdcf63',
+                                            borderRadius: '0.3em',
+                                            x: 30,
+                                            fontWeight: '600',
+                                        }}
+                                        transition={{ duration: 0.5 }}
+                                        className='tracking-wide border-2 w-full h-full absolute z-0 flex justify-center items-center'
+                                    >
+                                        SEE MY WORK <i className="fa-solid fa-arrow-right ml-3"></i>
+                                    </motion.div>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/*contact form*/}
+                <div className='w-full py-4 bg-COTF flex justify-center items-center'>
+                    <div
+                        style={{
+                            width: 'clamp(310px, 95%, 850px)'
+                        }}
+                        className='h-auto flex flex-col justify-center items-center py-6 my-24'
+                    >
+                        <div className='w-full text-center py-6 mb-8'>
+                            <h3 
+                                style={{ fontSize: 'clamp(40px, 8vw, 2.55em)' }} 
+                                className='font-bold tracking-wider text-CBS'>
+                                Let's talk about your project
+                            </h3>
+                        </div>
+                        <ContactForm />
+                    </div>
+                </div>
             </section>
         </>
     )
