@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../../css/index.css';
 import { motion } from "framer-motion";
 import LottieRender from '../../assets/lottie_svg/LottieRender.tsx';
@@ -9,8 +9,6 @@ import Programing from '../../assets/svg/programin2.svg';
 import Design from '../../assets/svg/design.svg';
 import Experience from '../../assets/svg/experience.svg';
 import ContactForm from '../general/ContactForm.tsx';
-//fetch Data...
-import FetchData from '../../api/GetApi.tsx';
 import { Link } from 'react-router-dom';
 //This component contain all the main content of the page...
 
@@ -27,40 +25,7 @@ const Home: React.FC = () => {
         console.log('hola');
     }
 
-    //handle the feaching of the data... 
-    const [_projectData, setProjectData] = useState<any>(null);
-
-    // Function to transform API data
-    const transformData = (apiData:any) => {
-        return apiData.map((item:any, index:number) => ({
-            id: index,
-            imgCover: item.cover_image_text,
-            title: item.name_project,
-            brief: item.description_project,
-        }));
-    };
-
-    // Example of usage in your component
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Fetch data from the API
-                const data = await FetchData<any>('http://localhost:3000/personal_projects');
-
-                // Transform the data
-                const transformedData = transformData(data.projects);
-
-                // Use the transformed data or set it in your component state
-                setProjectData(transformedData);
-            } catch (error) {
-                console.error('Error: ', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-
+    
     return (
         <>
             <section>
@@ -113,8 +78,7 @@ const Home: React.FC = () => {
                                             backgroundImage: `url(${Pattern})`, 
                                             backgroundRepeat: 'no-repeat', 
                                             backgroundPosition: 'center', 
-                                            backgroundSize: 'cover', 
-                                            boxShadow: '0px 2px 5px rgba(26, 26, 26, 0.153)'}} 
+                                            backgroundSize: 'cover'}} 
                                     className='text-CBS font-medium leading-7 tracking-wide text-lg p-2 secondPartHome:p-1 rounded-md'
                                 >    
                                     While I might not conform to the traditional image of an artist stationed behind 
@@ -151,8 +115,8 @@ const Home: React.FC = () => {
                                             backgroundImage: `url(${Pattern})`, 
                                             backgroundRepeat: 'no-repeat', 
                                             backgroundPosition: 'center', 
-                                            backgroundSize: 'cover',
-                                            boxShadow: '0px 2px 5px rgba(26, 26, 26, 0.153)' }} 
+                                            backgroundSize: 'cover'
+                                        }} 
                                     className='text-CGS font-extrabold tracking-wide p-2 secondPartHome:p-1 rounded-md'
                                 >
                                     Development

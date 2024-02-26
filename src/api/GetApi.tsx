@@ -1,11 +1,12 @@
-//import the getToken and the getCookie functions from the "getToken" module...
+//import the getToken functions from the "getToken" module...
 import getToken from "./getToken";
 
 //I defined a generic function FetchData that takes a URL and returns a Promiseof type T
 async function FetchData<T>(url: string): Promise<T> {
     try {
-        //call the getToken function to ensure the prsence of a valid access token
+        //call the getToken function to ensure the presence of a valid access token
         const token = await getToken();
+        console.log('token: ', token);
 
         //make a fetch request to the specific URL with the access token...
         const response = await fetch(url, {
