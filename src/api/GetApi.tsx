@@ -6,7 +6,6 @@ async function FetchData<T>(url: string): Promise<T> {
     try {
         //call the getToken function to ensure the presence of a valid access token
         const token = await getToken();
-        console.log('token: ', token);
 
         //make a fetch request to the specific URL with the access token...
         const response = await fetch(url, {

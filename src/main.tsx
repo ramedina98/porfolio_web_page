@@ -17,14 +17,13 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement ).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          {/*Aqui hay que inicar poniendo las demas rutas
-          ejemplo en el repositorio donde tengo la app "Where in the world" */}
           <Route index element={<Home />}></Route>
-          <Route path="/work_projects" element={<WorkProjects />}></Route>
-          <Route path="/project/:id/:name" element={<Project />}></Route>
-          <Route path="/my_projects" element={<MyProjects />}></Route>
-          <Route path="/personal_project/:id/:name" element={<PersonalProject />}></Route>
         </Route>
+        {/*TODO: acomodar aqui los projects id dentro de los projects normal...*/}
+        <Route path="/work_projects" element={<WorkProjects />}></Route>
+        <Route path="/project/:id/:name" element={<Project />}></Route>
+        <Route path="/my_projects" element={<MyProjects />}></Route>
+        <Route path="/personal_project/:id/:name" element={<PersonalProject />}></Route>
         <Route path="/resume" element={<Resume />}></Route>
         {/*Este parte del router, posteriormete necesitara agregarle más rutas
           para el correcto funcionamiento del blog*/}
