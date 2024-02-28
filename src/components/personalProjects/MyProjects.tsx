@@ -54,7 +54,7 @@ const MyProjects: React.FC = () => {
                 customStyle={{
                     backgroundColor: '#FFFAEB', 
                     transition: 'background-color 0.5s ease', 
-                    position: 'relative',
+                    position: 'sticky',
                     padding: '3em 0',
                 }}
                 logoColor={{

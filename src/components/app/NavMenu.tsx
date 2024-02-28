@@ -1,5 +1,5 @@
 //here we have the burger menu displayed...
-import React from "react";
+import React, { CSSProperties } from "react";
 import LottieRender from '../../assets/lottie_svg/LottieRender.tsx';
 import animationData from "../../assets/lottie_json/logo.json";
 import { motion, useAnimation } from "framer-motion";
@@ -10,9 +10,10 @@ import { useLocation } from "react-router-dom";
 
 interface NavMenuProps {
     cerrarMenu: () => void;
+    customBG: CSSProperties,
 }
 
-const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
+const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu, customBG }) => {
 
     const controls = useAnimation();
 
@@ -36,7 +37,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
     };
 
     const handleLottieClick = () => {
-        console.log('Hola')
+        console.log('');
     }
 
     const navItems = [
@@ -49,13 +50,14 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu }) => {
 
     return (
         <motion.div
-            className="w-full h-full fixed z-50 py-5 px-1 NavmenuMobile:p-5"
+            className="w-full h-full fixed top-0 left-0 z-50 py-5 px-1 NavmenuMobile:p-5"
             initial={{ height: "150px", opacity: 0 }}
             animate={controls}
             transition={{duration: 0.25}}
         >
             <motion.div
-                className="w-full h-full bg-CSH rounded-lg"
+                style={customBG}
+                className="w-full h-full rounded-lg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >
