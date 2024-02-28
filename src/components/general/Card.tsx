@@ -6,33 +6,55 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
+interface LinkItem {
+    exist: boolean,
+    link: string
+}
+
 interface Props{
     id: number,
     coverImg: string, 
     title: string, 
     brief: string, 
-    link: string,
-    gitHubLink: string,
+    links: {
+        [key: string]: LinkItem[];
+    };
     customStyle: React.CSSProperties,
+    path: string,
 }
 
-//TODO: agregar dos botones, uno para ir a la web y otro para ir a github...
-//TODO: tambien checar que el tamaño sea como el de Olalu's, checar su pagina...
-//TODO: checar si poner algunos botones para que la gente entienda más pa donder ir... (checar más cards en material UI)
 
-const CardProject: React.FC<Props> = ({ id, coverImg, title, brief, link, gitHubLink, customStyle }) => {
+const CardProject: React.FC<Props> = ({ id, coverImg, title, brief, links, customStyle, path }) => {
 
-    //TODO: hay que hacer una funcion que tome el string del titulo y le ponga guion bajos entre palabras...
+    /*this function is simple, and its purpose is simple too: it helps us to take the title
+    of the project and add underscores between words and then put it the url so that it looks 
+    good in the url...*/
+    const addUnderscore = (st: string): string => {
+        //divide the string into words...
+        const word = st.split(' ');
+
+        //iterate over the words and join them with underscores...
+        const result = word.join('_');
+
+        return result;
+    }
+
     return(
         <>
-            <Card sx={{ maxWidth: 330 }}>
-                <Link to={`/personal_project/${id}/${title}`}>
+            <Card sx={{ width: 330 }}>
+                <Link to={`${path}/${id}/${addUnderscore(title)}`}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
                             height="140"
                             image={coverImg}
                             alt={title}
+                            style={{ 
+                                minHeight: '255px',
+                                maxHeight: '255px', 
+                                width: '100%', 
+                                objectFit: 'cover' 
+                            }}
                         />
                         <CardContent
                             style={customStyle}
@@ -49,24 +71,28 @@ const CardProject: React.FC<Props> = ({ id, coverImg, title, brief, link, gitHub
                 <CardActions
                     style={customStyle}
                 >
-                    <Button size="small" color="info">
-                        <a 
-                            href={gitHubLink} 
-                            target='_blank'
-                            className='w-full'
-                        >
-                            <i className="fa-brands fa-github"></i>
-                        </a>
-                    </Button>
-                    <Button size="small" color="info">
-                        <a 
-                            href={link} 
-                            target='_blank'
-                            className='w-full'
-                        >
-                            <i className="fa-solid fa-link"></i>
-                        </a>
-                    </Button>
+                    {links[0][0].exist && (
+                        <Button size="small" color="info">
+                            <a 
+                                href={links[0][0].link} 
+                                target='_blank'
+                                className='w-full'
+                            >
+                                <i className="fa-brands fa-github"></i>
+                            </a>
+                        </Button>
+                    )}
+                    {links[1][0].exist && (
+                        <Button size="small" color="info">
+                            <a 
+                                href={links[1][0].link} 
+                                target='_blank'
+                                className='w-full'
+                            >
+                                <i className="fa-solid fa-link"></i>
+                            </a>
+                        </Button>
+                    )}
                 </CardActions>
             </Card>
         </>

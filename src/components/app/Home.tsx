@@ -14,6 +14,13 @@ import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
 
+    //handle the scroll up automatically...
+    const scrollTop = () => {
+        window.scroll({ top:0, behavior: 'auto' });
+    }
+
+    scrollTop();
+
     //Customized styles for the burger menu...
     const customSpaceStyle = {
         width: '280px', 

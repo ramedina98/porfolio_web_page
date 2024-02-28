@@ -1,53 +1,30 @@
-import React, { CSSProperties, useState, useEffect } from "react";
-import FetchData from "../../api/GetApi";
+import React, { CSSProperties } from "react";
 import CardProject from "./Card";
 import CardSkeleton from "../skeletons/CardSkeleton";
 
-//FetchData Interface...
-//TODO: Hacerlo resiclable...
+//data array interface...
 interface Project {
     cover_image_text: string;
     description_project: string;
     name_project: string;
     github_link: string;
     project_id: number;
-    technology_icons: string;
-    technology_names: string;
     web_link: string;
 }
 
+//interface for defining component props...
 interface Props{
     Title: string,
     Brief: string, 
-    customStyle: CSSProperties
+    customStyle: CSSProperties, 
+    data: Project[], 
+    loading: boolean,
+    path: string,
+    web: boolean, 
+    github: boolean,
 }
 
-const Projects: React.FC<Props> = ({ Title, Brief, customStyle }) => {
-
-    //hook for the use of the data obtained by fetching API data...
-    const [projects, setProjects] = useState<Project[]>([]);
-    //this hook is to show the card skeletons while getting the data from the API...
-    const [loading, setLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        const url = "http://localhost:3000/personal_projects";
-
-        const fetchData = async () => {
-            try{
-                const data = await FetchData<{ projects: Project[]}>(url);
-                /*TODO: checar porque dice; La propiedad 'projects' no existe 
-                en el tipo 'any[]'.ts(2339) any*/
-                setProjects(data.projects);
-            } catch(error){
-                console.log('Error fetching project data: ', error);
-            } finally{
-                //when the request is finished the skeletons will be hidden...
-                setLoading(false);
-            }
-        }; 
-
-        fetchData();
-    }, []);
+const Projects: React.FC<Props> = ({ Title, Brief, customStyle, data, loading, path, web, github}) => {
 
 
     return (
@@ -86,22 +63,31 @@ const Projects: React.FC<Props> = ({ Title, Brief, customStyle }) => {
                         Array.from({ length: 6 }).map((_, index) => (
                             <CardSkeleton key={index}/>
                         ))
-                    ) : (projects.map((project: any, index: number) => (
+                    ) : (data.map((project: any, index: number) => (
                             <CardProject 
                                 key={index}
                                 id={project.project_id}
                                 coverImg={project.cover_image_text}
                                 title={project.name_project}
                                 brief={project.description_project}
-                                link={project.web_link}
-                                gitHubLink={project.github_link}
+                                links={{
+                                    0: [{
+                                        exist: github,
+                                        link: project.github_link
+                                    }], 
+                                    1: [{
+                                        exist: web, 
+                                        link: project.web_link
+                                    }]
+                                }}
                                 customStyle={{
                                     backgroundColor: '#f8ffff',
                                     color: '#252A2D', 
                                 }}
+                                path={path}
                             />
                         ))
-                    )};
+                    )}
                 </div>
             </section>
         </>
