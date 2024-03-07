@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import useFormatString from '../../hooks/useFormatString';
 
 interface LinkItem {
     exist: boolean,
@@ -26,23 +27,15 @@ interface Props{
 
 const CardProject: React.FC<Props> = ({ id, coverImg, title, brief, links, customStyle, path }) => {
 
-    /*this function is simple, and its purpose is simple too: it helps us to take the title
-    of the project and add underscores between words and then put it the url so that it looks 
-    good in the url...*/
-    const addUnderscore = (st: string): string => {
-        //divide the string into words...
-        const word = st.split(' ');
-
-        //iterate over the words and join them with underscores...
-        const result = word.join('_');
-
-        return result;
-    }
+    /*This hook "useFormatString" helps us to put underscores between words, 
+    in this case helps us to make the project name appear in the url in better way
+    "visibly more aesthetic"...*/
+    const nameExtensionURL = useFormatString(title); 
 
     return(
         <>
             <Card sx={{ width: 330 }}>
-                <Link to={`${path}/${id}/${addUnderscore(title)}`}>
+                <Link to={`${path}/${id}/${nameExtensionURL}`}>
                     <CardActionArea>
                         <CardMedia
                             component="img"

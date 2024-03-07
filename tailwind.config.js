@@ -25,7 +25,11 @@ export default {
         'clampLiNavBM': 'clamp(310px, 95%, 450px)',
         'clampFirstPartHome': 'clamp(310px, 100%, 960px)',
         'clampSecondPartHome': 'clamp(310px, 90%, 1250px)', 
-        'clampTextDivExp': 'clamp(310px, 95%, 650px)'
+        'clampTextDivExp': 'clamp(310px, 95%, 650px)',
+        'clampToSection': 'clamp(350px, 47%, 550px)',
+        'clampArticle': 'clamp(310px, 95%, 700px)',
+        'clampTableContents': 'clamp(310px, 95%, 325px)', 
+        'clampFooterForm': 'clamp(310px, 95%, 600px)',
       }, 
       width: {
         'wfooterNav': '310px',
@@ -36,12 +40,16 @@ export default {
         'wTitleBrief': '550px',
         'wMyPhoto': '350px',
         'inputsCf': '355px',
+        'inputsPJ': '250px',
         'wHomeSecondPartDivSkill': '500px',
+        'wtopSectionImg': '480px',
       },
       height: {
         'hFirstView': '700px',
         'hFirstView2': '500px', 
         'hUlBMnav': '100%',
+        'htopSectionImg': '480px',
+        'htopsectiondiv': '550px'
       }, 
       screens: {
         'mobileBM': '507px',
@@ -51,6 +59,9 @@ export default {
         'secondPartHome': '1129px',
         'screenProjectsSection': '846px',
         'inputsCF': '840px',
+        'screenTopSection': '830px',
+        'screenArticle': '1089px',
+        'screenFooterForm': '955px',
       },
     },
   },

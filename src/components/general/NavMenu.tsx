@@ -57,7 +57,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu, customBG }) => {
         >
             <motion.div
                 style={customBG}
-                className="w-full h-full rounded-lg"
+                className="w-full h-full rounded-lg shadow-md"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >

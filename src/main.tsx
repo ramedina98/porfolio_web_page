@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import App from './App.tsx'
 import Home from './components/app/Home.tsx';
-import Resume from './components/app/Resume.tsx';
+import Resume from './components/resume/Resume.tsx';
 import WorkProjects from './components/workProjects/WorkProjects.tsx';
 import MyProjects from './components/personalProjects/MyProjects.tsx';
 import PersonalProject from './components/personalProjects/PersonalProject.tsx';

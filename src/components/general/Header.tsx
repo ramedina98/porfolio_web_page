@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import LottieRender from '../../assets/lottie_svg/LottieRender.tsx';
 import animationData from '../../assets/lottie_json/burguer_menu.json';
-import NavMenu from '../../components/app/NavMenu.tsx';
+import NavMenu from './NavMenu.tsx';
 
 interface Props{
     customStyle: CSSProperties, 
@@ -21,10 +21,11 @@ const Header: React.FC<Props> = ({ customStyle, logoColor }) => {
     const [bgColor, setBgColor] = useState<CSSProperties>({ backgroundColor: '#FFFAEB' });
 
     //Map background colors based on specific routers...
+    //TODO: agregar más colores para el nav...
     const bgColorMap: { [key: string]: CSSProperties } = {
-        '/my_projects': { backgroundColor: '#f8ffff' },
-        // TODO: agregar más colores...
-        default: { backgroundColor: '#FFFAEB' },
+        '/my_projects': { backgroundColor: '#FFFFFF' },
+        '/personal_project': { backgroundColor: '#4ECCCF'},
+        default: { backgroundColor: '#f8ffff' },
     };
 
     //Function to update the background color based on the current route...

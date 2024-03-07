@@ -1,4 +1,4 @@
-import React, {useState, ChangeEvent, FormEvent } from 'react';
+import React, {useState, ChangeEvent, FormEvent  } from 'react';
 import PostApi from '../../api/PostApi';
 import AlertNotification from './AlertNotification';
 import { AlertColor } from '@mui/material';
@@ -11,8 +11,12 @@ interface FormData{
     message: string,
 }
 
+interface Props{
+    screenClassName: string,
+}
 
-const ContactForm: React.FC = () => {
+
+const ContactForm: React.FC<Props> = ({ screenClassName }) => {
 
     //initial state of the form data... 
     const initialFormData: FormData = {
@@ -126,7 +130,7 @@ const ContactForm: React.FC = () => {
             >
                 <div className='w-full h-auto py-3 flex justify-between items-center flex-wrap gap-1'>
                     <div 
-                        className='w-full inputsCF:w-inputsCf h-24 flex flex-col justify-center items-start'>
+                        className={`w-full ${screenClassName} h-24 flex flex-col justify-center items-start`}>
                         <label 
                             htmlFor="name" 
                             style={{
@@ -152,7 +156,7 @@ const ContactForm: React.FC = () => {
                         />
                     </div>
                     <div 
-                        className='w-full inputsCF:w-inputsCf mt-6 inputsCF:mt-0 h-24 flex flex-col justify-center items-start'>
+                        className={`w-full ${screenClassName} mt-6 inputsCF:mt-0 h-24 flex flex-col justify-center items-start`}>
                         <label 
                             htmlFor="email" 
                             style={{

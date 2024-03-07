@@ -1,41 +1,63 @@
-import React, { CSSProperties} from 'react';
+import React, { CSSProperties } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import '../../css/style.css';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
+import SliderSkeleton from '../skeletons/SliderSkeleton';
 
 //This component contain all the main content of the page...
-interface SliderProps{  
-    data: any,
-    customStyle?: CSSProperties;
+interface ImageData {
+    img_link: string;
 }
 
-const Slider: React.FC<SliderProps> = ({ data, customStyle }) => {
+interface SliderProps{  
+    data: {
+        img_carrusel: ImageData[];
+    }[],
+    customStyle: CSSProperties;
+    loading: boolean,
+}
 
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index:any, className:any) {
-            return '<span class="' + className + '">' + (index + 1) + '</span>';
-        },
-    };
-    
+const Slider: React.FC<SliderProps> = ({ data, customStyle, loading }) => {
+
+
     return (
         <>
-            <Swiper
-                pagination={ pagination }
-                modules={ [Pagination] }
-                style={ customStyle }
-                spaceBetween={50} 
-                slidesPerView={1}
-            >
-                {data && data.map((project:any) => (
-                    <SwiperSlide key={project.id} >
-                        
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-    </>
+            {loading ? (
+                <SliderSkeleton 
+                    customStyle={ customStyle }
+                />
+            ): (
+                <Swiper
+                    pagination={{
+                        type: 'progressbar',
+                    }}
+                    navigation={true}
+                    modules={ [Pagination, Navigation ]}
+                    style={ customStyle }
+                    className='mySwiper'
+                >
+                    {data[0].img_carrusel && data[0].img_carrusel.map((project: any, index: number) => (
+                        <SwiperSlide 
+                            key={index}
+                            className='w-full h-full' 
+                        >
+                            <img
+                                src={project.img_link}
+                                alt={'img'}
+                                style={{
+                                    width: '100%',
+                                    display: 'block',
+                                    objectFit: 'contain'
+                                }}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            )}
+        </>
     )
 }
 

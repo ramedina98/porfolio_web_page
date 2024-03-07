@@ -310,16 +310,18 @@ const Home: React.FC = () => {
                         style={{
                             width: 'clamp(310px, 95%, 850px)'
                         }}
-                        className='h-auto flex flex-col justify-center items-center py-6 my-24'
+                        className='h-auto flex flex-col justify-center items-center py-6 my-20'
                     >
-                        <div className='w-full text-center py-6 mb-8'>
+                        <div className='w-full text-center py-6 mb-14'>
                             <h3 
                                 style={{ fontSize: 'clamp(40px, 8vw, 2.55em)' }} 
                                 className='font-bold tracking-wider text-CBS'>
                                 Let's talk about your project
                             </h3>
                         </div>
-                        <ContactForm />
+                        <ContactForm 
+                            screenClassName='inputsCF:w-inputsCf'
+                        />
                     </div>
                 </div>
             </section>
