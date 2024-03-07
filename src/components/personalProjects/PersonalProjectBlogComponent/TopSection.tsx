@@ -85,7 +85,8 @@ const TopSection: React.FC<Props> = ({ data, customStyle, loading }) => {
                                     <div className="w-full h-auto py-2">
                                         <h3 
                                             style={{ fontSize: 'clamp(40px, 2vw, 2.60em)'}}
-                                            className="text-CBS font-bold tracking-wide">
+                                            className="text-CBS font-bold tracking-wide"
+                                        >
                                             {data.title}
                                         </h3>
                                     </div>

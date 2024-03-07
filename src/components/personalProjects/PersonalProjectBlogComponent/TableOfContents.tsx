@@ -1,6 +1,7 @@
 import React, { CSSProperties } from "react";
 import { Variants, motion } from "framer-motion";
 import TableOfContentsSkeleton from "../../skeletons/TableOfContentSkeleton";
+import GitAndWebLinks from "../../general/GitAndWebLinks";
 
 
 interface Props{
@@ -10,6 +11,8 @@ interface Props{
     customStyle: CSSProperties,
     customLiStyle: CSSProperties,
     customVariants: Variants,
+    linkWeb?: string,
+    linkGit?: string,
     /*this function is essential since this component is designed so that you
     can click on any li and it will take you to the corresponding div and the 
     navigation will be more comfortable and easy...*/
@@ -17,7 +20,7 @@ interface Props{
     loading: boolean,
 }
 
-const TableOfContents: React.FC<Props> = ({ titleOftable, customTitleStyle, customStyle, listText, customLiStyle, customVariants, onItemClick, loading }) => {
+const TableOfContents: React.FC<Props> = ({ titleOftable, customTitleStyle, customStyle, listText, customLiStyle, customVariants, linkWeb, linkGit, onItemClick, loading }) => {
 
     return(
         <>
@@ -26,7 +29,7 @@ const TableOfContents: React.FC<Props> = ({ titleOftable, customTitleStyle, cust
             ): (
                 <div 
                     style={customStyle}
-                    className="w-clampTableContents hidden screenArticle:flex"
+                    className="w-clampTableContents h-auto hidden screenArticle:flex flex-col justify-center items-start"
                 >
                     <ul className="py-1 w-full">
                         <li
@@ -47,6 +50,41 @@ const TableOfContents: React.FC<Props> = ({ titleOftable, customTitleStyle, cust
                             </motion.li>
                         ))}
                     </ul>
+                    <GitAndWebLinks 
+                            customContStyle={{
+                                width: '75%',
+                                marginTop: '1em', 
+                                marginBottom: '3em',
+                                justifyContent: 'start',
+                                alignItems: 'center',
+                                paddingLeft: '1em'
+                            }}
+                            customFont={{
+                                color: 'white',
+                                fontSize: '1em',
+                                fontWeight: '700'
+                            }}
+                            customAtags={{
+                                backgroundColor: '#252A2D',
+                                borderRadius: '0.3em',
+                                width: '54px', 
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                padding: '0.5em',
+                                marginRight: '1.5em'
+                            }}
+                            links={{
+                                Git: {
+                                    exist: true,
+                                    text: `${linkGit}`
+                                },
+                                Web: {
+                                    exist: true,
+                                    text: `${linkWeb}`
+                                }
+                            }}
+                        />
                 </div>
             )}
         </>

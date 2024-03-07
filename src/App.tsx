@@ -48,8 +48,6 @@ const App: React.FC = () => {
       />
       <Outlet />
 
-      {/*TODO: hay que hacer que cuando el nav pase por encima del footer desaparesca, 
-      o que el fondo de este sea de otro color...*/}
       <Footer />
     </>
   )

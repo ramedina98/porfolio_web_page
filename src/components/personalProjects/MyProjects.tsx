@@ -34,8 +34,7 @@ const MyProjects: React.FC = () => {
         const fetchData = async () => {
             try{
                 const data = await FetchData<{ projects: Project[]}>(url);
-                /*TODO: checar porque dice; La propiedad 'projects' no existe 
-                en el tipo 'any[]'.ts(2339) any*/
+                //Setting the state of projects...
                 setProjects(data.projects);
             } catch(error){
                 console.log('Error fetching project data: ', error);

@@ -15,24 +15,24 @@ const TopSectionSkeleton: React.FC<Props> = ( {customStyle} ) => {
                     <div className="h-atuo screenTopSection:h-htopsectiondiv flex justify-center items-end w-full screenTopSection:w-clampToSection">
                         <div className="w-full h-auto px-2 py-6 flex flex-col justify-between items-center">
                             <div className="w-full h-auto">
-                                <Skeleton variant="text" width={180} height={30}/>
+                                <Skeleton animation="wave"  variant="text" width={180} height={30}/>
                             </div>
                             <div className="w-full h-auto">
-                                <Skeleton variant="text" width={300} height={150}/>
+                                <Skeleton animation="wave" variant="text" width={300} height={150}/>
                             </div>
                             <div className="w-full h-auto">
-                                <Skeleton variant="text" width={200} height={20}/>
+                                <Skeleton animation="wave"  variant="text" width={200} height={20}/>
                             </div>
                             <div className="w-full h-auto py-2 flex flex-wrap gap-4 justify-start items-center">
                                 {[1, 2, 3, 4].map((index) => (
-                                    <Skeleton key={index} width={50} height={50} />
+                                    <Skeleton key={index} animation="wave"  width={50} height={50} />
                                 ))}
                             </div>
                         </div>
                     </div>
                     <div className="h-atuo screenTopSection:h-htopsectiondiv flex justify-center items-center w-full screenTopSection:w-clampToSection mb-14 screenTopSection:mb-0">
                         <div className="order-1 w-full screenTopSection:w-wtopSectionImg h-full screenTopSection:h-htopSectionImg">
-                            <Skeleton variant="rectangular" width="100%" height="100%" />
+                            <Skeleton variant="rectangular" animation="wave" width="100%" height="100%" />
                         </div>
                     </div>
                 </div>

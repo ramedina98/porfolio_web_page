@@ -1,7 +1,15 @@
 import React from "react";
 import { Skeleton } from "@mui/material";
 
-const ArticleSkeleton: React.FC = () => {
+interface Props {
+    titleWidth?: number;
+    titleHeight?: number;
+    paragraphWidth?: number;
+    paragraphHeight?: number;
+    paragraphRepetitions?: number;
+}
+
+const ArticleSkeleton: React.FC<Props> = ({ titleWidth, titleHeight, paragraphWidth, paragraphHeight, paragraphRepetitions}) => {
 
     return (
         <>
@@ -12,23 +20,23 @@ const ArticleSkeleton: React.FC = () => {
                     >
                         <Skeleton 
                             animation="wave" 
-                            width={450} 
-                            height={55} 
+                            width={titleWidth} 
+                            height={titleHeight} 
                             style={{
                                 marginBottom: '1em'
                             }}
                         />
                     </h2>
                 </div>
-                {Array(9).fill(0).map((_, index) => (
+                {Array(paragraphRepetitions).fill(0).map((_, index) => (
                         <p 
                             key={index} 
                             style={{}}
                         >
                             <Skeleton 
                                 animation="wave" 
-                                width={350} 
-                                height={25} 
+                                width={paragraphWidth} 
+                                height={paragraphHeight} 
                                 style={{
                                     marginBottom: '1em'
                                 }}

@@ -21,11 +21,10 @@ const Header: React.FC<Props> = ({ customStyle, logoColor }) => {
     const [bgColor, setBgColor] = useState<CSSProperties>({ backgroundColor: '#FFFAEB' });
 
     //Map background colors based on specific routers...
-    //TODO: agregar más colores para el nav...
     const bgColorMap: { [key: string]: CSSProperties } = {
         '/my_projects': { backgroundColor: '#FFFFFF' },
-        '/personal_project': { backgroundColor: '#4ECCCF'},
-        default: { backgroundColor: '#f8ffff' },
+        '/work_projects': { backgroundColor: '#FFFAEB'},
+        default: { backgroundColor: '#eaedf2' },
     };
 
     //Function to update the background color based on the current route...
@@ -63,7 +62,6 @@ const Header: React.FC<Props> = ({ customStyle, logoColor }) => {
         document.body.style.overflowY = 'hidden';
     }
 
-    //TODO: checar como le puedo hacer para que el header no tenga ese efecto al cambiar de relative a fixed...
     return (
         <>
             <header 

@@ -18,8 +18,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement ).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />}></Route>
+          {/*Posterior expancion*/}
         </Route>
-        {/*TODO: acomodar aqui los projects id dentro de los projects normal...*/}
         <Route path="/work_projects" element={<WorkProjects />}></Route>
         <Route path="/project/:id/:name" element={<Project />}></Route>
         <Route path="/my_projects" element={<MyProjects />}></Route>

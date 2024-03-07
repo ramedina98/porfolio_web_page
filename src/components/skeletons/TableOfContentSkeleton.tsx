@@ -6,7 +6,7 @@ const TableOfContentsSkeleton: React.FC = () => {
     return (
         <>
             <div 
-                className="w-clampTableContents hidden screenArticle:flex"
+                className="w-clampTableContents hidden screenArticle:flex flex-col justify-center place-items-start"
             >
                 <ul className="py-1 w-full">
                     <li
@@ -37,6 +37,21 @@ const TableOfContentsSkeleton: React.FC = () => {
                         </li>
                     ))}
                 </ul>
+                <div className='w-full py-1 flex justify-start items-start'>
+                    <Skeleton 
+                        animation="wave" 
+                        width={54}
+                        height={44}
+                        style={{
+                            marginRight: '1.5em'
+                        }}
+                    />
+                    <Skeleton 
+                        animation="wave" 
+                        width={54}
+                        height={44}
+                    />
+                </div>
             </div>
         </>
     )

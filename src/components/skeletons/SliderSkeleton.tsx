@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import Skeleton from '@mui/material/Skeleton';
 
-//TODO:Revisar por que no se cambia de color el back ground de este skeleton...
 
 interface Props{
     customStyle: CSSProperties,

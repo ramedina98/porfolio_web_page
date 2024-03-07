@@ -1,4 +1,3 @@
-//My personal projects...
 import React, {useState, useEffect} from 'react';
 import Projects from '../general/Projects';
 import Header from '../general/Header';

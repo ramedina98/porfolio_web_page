@@ -20,6 +20,8 @@ interface BlogData {
     img_carrusel: imgLink[];
     subT: SubTextData[];
     tec: { icon_tec: string }[];
+    web: string, 
+    git: string,
 }
 
 interface imgLink{
@@ -73,7 +75,7 @@ const PersonalProject: React.FC = () => {
     const { id } = useParams<{id: string}>();
 
     //hook for the use of the data obtained by fetching API data...
-    const [_projects, setProjects] = useState<BlogData>();
+    const [projects, setProjects] = useState<BlogData>();
     //this hook is to show the card skeletons while getting the data from the API...
     const [loading, setLoading] = useState<boolean>(true);
     //this hook is to send the necessary information to the TopSection component...
@@ -235,6 +237,11 @@ const PersonalProject: React.FC = () => {
                                 Array(3).fill(0).map((_, index) => (
                                     <ArticleSkeleton 
                                         key={index}
+                                        titleWidth={450}
+                                        titleHeight={65}
+                                        paragraphWidth={650}
+                                        paragraphHeight={25}
+                                        paragraphRepetitions={9}
                                     />
                                 ))
                             ) : (
@@ -282,6 +289,8 @@ const PersonalProject: React.FC = () => {
                                 left: 0,
                             }}
                             customVariants={Variants}
+                            linkWeb={projects?.web}
+                            linkGit={projects?.git}
                             //function to handle the click on the li of the list and go to the corresponding div...
                             onItemClick={handleItemClick}
                             loading={loading}
