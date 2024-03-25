@@ -38,7 +38,7 @@ const Project: React.FC = () => {
     useEffect(() => {
         
         //Building the API endpoint URL using the project ID from the route parametes...
-        const url = `http://localhost:3000/work_project/${id}`;
+        const url = `https://serverwebpage-production.up.railway.app/work_project/${id}`;
 
         //Defining an asynchronous function to fetch data from the specified URL...
         const fetchData = async () => {

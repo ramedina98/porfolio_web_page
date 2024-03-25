@@ -29,7 +29,7 @@ const MyProjects: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        const url = "http://localhost:3000/personal_projects";
+        const url = "https://serverwebpage-production.up.railway.app/personal_projects";
 
         const fetchData = async () => {
             try{

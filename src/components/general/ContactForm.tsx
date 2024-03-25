@@ -84,7 +84,7 @@ const ContactForm: React.FC<Props> = ({ screenClassName }) => {
             setLoading(true);
             
             //API request (POST METHOD)...
-            await PostApi('http://localhost:3000/message_email', formData); 
+            await PostApi('https://serverwebpage-production.up.railway.app/message_email', formData); 
             
             //show the notification...
             setNotification(true);

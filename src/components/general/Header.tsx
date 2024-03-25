@@ -1,9 +1,11 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import '../../css/index.css';
 import LottieRender from '../../assets/lottie_svg/LottieRender.tsx';
 import animationData from '../../assets/lottie_json/burguer_menu.json';
 import NavMenu from './NavMenu.tsx';
+import Logo from './../../assets/svg/Logo.svg';
 
 interface Props{
     customStyle: CSSProperties, 
@@ -72,9 +74,27 @@ const Header: React.FC<Props> = ({ customStyle, logoColor }) => {
                 <div className={`text-sizeTitleHeader font-medium tracking-wider cursor-pointer`}>
                     <Link 
                         to="/"
-                        style={logoColor}
+                        style={{
+                            ...logoColor, 
+                        }}
+                        className='w-full screenLogoCont:w-wHeaderLogoCont flex justify-between items-center'
                     >
-                        Ricardo Medina
+                        <figure
+                            style={{
+                                width: '56px',
+                            }}
+                        >
+                            <img 
+                                src={Logo} 
+                                alt="Logo" 
+                                className='w-full object-cover object-center'
+                            />
+                        </figure>
+                        <span
+                            className='hidden screenLogoCont:block fontStyle'
+                        >
+                            Ricardo Medina
+                        </span>
                     </Link>
                 </div>
                 {LottieRender({animationData, containerStyle: customBurguerMStyle, onCustomClick: handleLottieClick})}

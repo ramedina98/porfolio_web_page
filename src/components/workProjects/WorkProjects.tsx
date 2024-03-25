@@ -80,7 +80,7 @@ const WorkProjects: React.FC = () => {
     }
 
     useEffect(() => {
-        const url = "http://localhost:3000/work_projects";
+        const url = "https://serverwebpage-production.up.railway.app/work_projects";
 
         const fetchData = async () => {
             try{

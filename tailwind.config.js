@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [ "./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}", ],
@@ -30,8 +32,10 @@ export default {
         'clampArticle': 'clamp(310px, 95%, 700px)',
         'clampTableContents': 'clamp(310px, 95%, 325px)', 
         'clampFooterForm': 'clamp(310px, 95%, 600px)',
+        'clampwResumeInfo': 'clamp(310px, 100%, 760px)',
       }, 
       width: {
+        'wHeaderLogoCont': '270px',
         'wfooterNav': '310px',
         'wHiremeDiv': '280px', 
         'wCloseBtn': '150px',
@@ -43,6 +47,7 @@ export default {
         'inputsPJ': '250px',
         'wHomeSecondPartDivSkill': '500px',
         'wtopSectionImg': '480px',
+        'wResumeCore': '310px',
       },
       height: {
         'hFirstView': '700px',
@@ -52,6 +57,7 @@ export default {
         'htopsectiondiv': '550px'
       }, 
       screens: {
+        'screenLogoCont':'412px',
         'mobileBM': '507px',
         'screenSapnBM': '598px',
         'NavmenuMobile': '384px',
@@ -62,6 +68,7 @@ export default {
         'screenTopSection': '830px',
         'screenArticle': '1089px',
         'screenFooterForm': '955px',
+        'screenRM': '790px',
       },
     },
   },

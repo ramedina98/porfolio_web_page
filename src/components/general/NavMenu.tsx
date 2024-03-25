@@ -66,20 +66,20 @@ const NavMenu: React.FC<NavMenuProps> = ({ cerrarMenu, customBG }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                 >
-                    <div className="ml-2 py-2 w-wHiremeDiv flex justify-evenly items-center flex-row">
+                    <div className="relative ml-2 py-2 w-wHiremeDiv flex justify-evenly items-center flex-row">
                         {LottieRender({
-                        animationData,
-                        containerStyle: customStyle,
-                        onCustomClick: handleLottieClick,
-                    })}
-                    <div className="border-l-2 border-CSTO py-3 pl-4">
-                        <a
-                            href="mailto:rmedinamartindelcampo@gmail.com"
-                            className="text-CBS font-semibold tracking-wider"
-                    >
-                            HIRE ME
-                        </a>
-                    </div>
+                            animationData,
+                            containerStyle: customStyle,
+                            onCustomClick: handleLottieClick,
+                        })}
+                        <div className="border-l-2 border-CSTO py-3 pl-4">
+                            <a
+                                href="mailto:rmedinamartindelcampo@gmail.com"
+                                className="text-CBS font-semibold tracking-wider"
+                            >
+                                HIRE ME
+                            </a>
+                        </div>
                     </div>
         
                     <div className="mr-2 py-5 w-wCloseBtn flex justify-center items-center">

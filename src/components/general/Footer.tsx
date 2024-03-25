@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../../css/index.css';
 
 const Footer: React.FC = () => {
 
@@ -9,8 +10,8 @@ const Footer: React.FC = () => {
                 <div className='w-clampFooter flex justify-center items-center flex-col px-1 py-6'>
                 <div className=' w-full py-4'>
                     {/*TODO: aqui debe ir mi logo, osea hay que cambiar esto cuando este listo dicho logo*/}
-                    <div className='text-CTW text-sizeTitleHeader pl-5'>
-                        <Link to="/">Ricardo Medina</Link>
+                    <div className='text-CTW text-sizeTitleHeader pl-5 tracking-wider'>
+                        <Link to="/" className="fontStyle">Ricardo Medina</Link>
                     </div>
                 </div>
 

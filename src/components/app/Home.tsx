@@ -3,7 +3,7 @@ import '../../css/index.css';
 import { motion } from "framer-motion";
 import LottieRender from '../../assets/lottie_svg/LottieRender.tsx';
 import animationData from '../../assets/lottie_json/space.json';
-import Me from '../../assets/svg/me.png';
+import Me from '../../assets/images/me.png';
 import Pattern from '../../assets/svg/pattern.svg';
 import Programing from '../../assets/svg/programin2.svg';
 import Design from '../../assets/svg/design.svg';
@@ -44,12 +44,12 @@ const Home: React.FC = () => {
                         <div className='w-full h-hFirstView flex justify-center items-start flex-col px-5 firstPartHome:w-wTitleBrief firstPartHome:px-0'>
                             {/*Title*/}
                             <div className='w-full py-5'>
-                                <h2 className='text-fontTitleWork font-extrabold text-CSH'>Full Stack <br/> Developer</h2>
+                                <h2 className='text-fontTitleWork font-extrabold text-CSH'>Front-End <br/> Developer</h2>
                             </div>
                             {/*slogan*/}
                             <div className='w-full py-5 mobileBM:w-96 mb-9'>
                                 <p className='text-CSH font-medium tracking-wider text-lg leading-8'>
-                                    From idea to final product, <span className='text-CST'>I am</span> a <span className='text-CST'>full stack developer </span>
+                                    From idea to final product, <span className='text-CST'>I am</span> a <span className='text-CST'>Skilled developer </span>
                                     bringing versatility and comprehensive solutions.
                                 </p>
                             </div>
