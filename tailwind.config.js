@@ -35,7 +35,7 @@ export default {
         'clampwResumeInfo': 'clamp(310px, 100%, 760px)',
       }, 
       width: {
-        'wHeaderLogoCont': '270px',
+        'wHeaderLogoCont': '100px',
         'wfooterNav': '310px',
         'wHiremeDiv': '280px', 
         'wCloseBtn': '150px',

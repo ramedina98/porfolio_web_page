@@ -93,7 +93,7 @@ const Header: React.FC<Props> = ({ customStyle, logoColor }) => {
                         <span
                             className='hidden screenLogoCont:block fontStyle'
                         >
-                            Ricardo Medina
+                            RM
                         </span>
                     </Link>
                 </div>

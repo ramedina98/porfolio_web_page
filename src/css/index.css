@@ -17,7 +17,7 @@ body{
 .fontStyle{
     font-family: "Roboto", sans-serif;
     font-weight: 900;
-    font-style: italic;
+    font-style: normal;
 }
 .fontStyle_notI{
     font-family: "Roboto", sans-serif;
