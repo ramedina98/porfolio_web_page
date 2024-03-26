@@ -164,11 +164,18 @@ const PersonalProject: React.FC = () => {
             console.error('Las referencias de los artículos no se han inicializado correctamente.');
             return;
         }
-    
-        const articleRef = articleRefs.current[index];
-    
         
-    
+        const articleRef = articleRefs.current[index];
+        
+        //check if the articleRefs or its current property is null
+        if (!articleRef || !articleRef.current) {
+            console.log('article: ', articleRef)
+            console.error(`La referencia para el artículo ${index} es nula.`);
+            return;
+        }
+
+        console.log(articleRef);
+        
         //scroll the corresponding article into view with smooth behavior...
         articleRef.current.scrollIntoView({
             behavior: 'smooth',
