@@ -117,6 +117,12 @@ const PersonalProject: React.FC = () => {
 
                 //setting the entire project data...
                 setProjects(data);
+
+                // Initialize refs based on the length of articleData.subT
+                articleRefs.current = Array(data.subT.length)
+                .fill(0)
+                .map((_, index: number) => articleRefs.current[index] || createRef());
+                
             } catch(error){
                 //loggin en error message if there is an issue fetching project data...
                 console.log('Error fetching project data: ', error);
@@ -148,18 +154,6 @@ const PersonalProject: React.FC = () => {
     //create a ref to store an array of refs for each article...
     const articleRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
     
-    useEffect(() => {
-        if(articleData.subT.length > 0){
-            console.log('Datos: ', articleData.subT)
-            // Initialize refs based on the length of articleData.subT
-            articleRefs.current = Array(articleData.subT.length)
-            .fill(0)
-            .map((_, index: number) => articleRefs.current[index] || createRef());
-            // Create refs for each article if they don't exist or reuse existing ones
-        }
-        console.log('Datos: ', articleData.subT)
-    }, [articleData.subT]);
-
     //Note: this function is passed as props to the table of content component...
     //function to handle clicks on table of contents items...
     const handleItemClick = (index: number) => {
