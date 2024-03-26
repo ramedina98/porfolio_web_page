@@ -167,12 +167,9 @@ const PersonalProject: React.FC = () => {
         
         //check if the articleRefs or its current property is null
         if (!articleRef || !articleRef.current) {
-            console.log('article: ', articleRef)
             console.error(`La referencia para el artículo ${index} es nula.`);
             return;
         }
-
-        console.log(articleRef);
         
         //scroll the corresponding article into view with smooth behavior...
         articleRef.current.scrollIntoView({
