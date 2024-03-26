@@ -149,11 +149,15 @@ const PersonalProject: React.FC = () => {
     const articleRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
     
     useEffect(() => {
-        // Initialize refs based on the length of articleData.subT
-        articleRefs.current = Array(articleData.subT.length)
+        if(articleData.subT.length > 0){
+            console.log('Datos: ', articleData.subT)
+            // Initialize refs based on the length of articleData.subT
+            articleRefs.current = Array(articleData.subT.length)
             .fill(0)
             .map((_, index: number) => articleRefs.current[index] || createRef());
-        // Create refs for each article if they don't exist or reuse existing ones
+            // Create refs for each article if they don't exist or reuse existing ones
+        }
+        console.log('Datos: ', articleData.subT)
     }, [articleData.subT]);
 
     //Note: this function is passed as props to the table of content component...
