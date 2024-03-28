@@ -10,7 +10,7 @@ const ListItem: React.FC<Props> = ({ text, listStyle }) => {
         <>
             <div 
                 style={listStyle}
-                className="w-full">
+                className="w-full overflow-hidden whitespace-nowrap overflow-ellipsis">
                 <i className="fa-solid fa-square text-xs mr-3"></i>
                 {text}
             </div>
